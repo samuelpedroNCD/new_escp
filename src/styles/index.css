@@ -1,10 +1,10 @@
 @import "@heroui/styles/css";
 
-/* Electric violet accent override */
+/* Electric green accent override */
 :root,
 .light,
 .dark {
-  --accent: oklch(55.6% 0.242 270.1); /* #6C63FF */
+  --accent: #39ff14;
   --accent-foreground: oklch(100% 0 0);
 }
 
