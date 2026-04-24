@@ -14,6 +14,27 @@ const fadeUp = {
 }
 
 export default function Home() {
+  const steps = [
+    {
+      title: 'Capture demand',
+      description: 'Collect qualified emails with consent and validation from day one.',
+    },
+    {
+      title: 'Track momentum',
+      description: 'Monitor signups in real time so you can measure launch readiness.',
+    },
+    {
+      title: 'Launch confidently',
+      description: 'Start with an audience that already asked to hear from you.',
+    },
+  ]
+
+  const trustPoints = [
+    'GDPR-ready consent built in',
+    'Spam-resistant validation flow',
+    'Fast setup with a clean admin view',
+  ]
+
   return (
     <PageTransition>
       <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -31,7 +52,7 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-24">
+        <main className="flex flex-1 flex-col items-center px-4 py-16 text-center sm:px-6 sm:py-24">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -93,6 +114,63 @@ export default function Home() {
           >
             <Counter />
           </motion.div>
+
+          {/* Section: How it works */}
+          <section className="mt-16 w-full max-w-5xl text-left sm:mt-24">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={6}
+              className="mb-8 text-center"
+            >
+              <p className="text-xs font-medium uppercase tracking-widest text-muted">How it works</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+                From interest to launch in 3 steps
+              </h2>
+            </motion.div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {steps.map((step, index) => (
+                <motion.article
+                  key={step.title}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="show"
+                  custom={7 + index}
+                  className="rounded-2xl border border-border bg-background p-5"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                    Step {index + 1}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{step.description}</p>
+                </motion.article>
+              ))}
+            </div>
+          </section>
+
+          {/* Section: Trust */}
+          <section className="mt-10 w-full max-w-5xl rounded-2xl border border-border bg-background p-6 text-left sm:mt-12 sm:p-8">
+            <motion.div variants={fadeUp} initial="hidden" animate="show" custom={10}>
+              <p className="text-xs font-medium uppercase tracking-widest text-muted">Why teams choose waitlist.io</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+                Built for serious launches, not vanity signups
+              </h2>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+                {trustPoints.map((point, index) => (
+                  <li
+                    key={point}
+                    className="rounded-xl border border-border/70 bg-background px-4 py-3 text-sm text-muted"
+                  >
+                    <span className="mr-2" style={{ color: 'var(--accent)' }}>
+                      {index + 1}.
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </section>
         </main>
 
         {/* Footer */}

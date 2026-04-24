@@ -2,7 +2,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Spinner } from '@heroui/react'
-import { supabase } from './lib/supabaseClient'
+import { supabase, hasSupabaseConfig, supabaseConfigMessage } from './lib/supabaseClient'
 import Home from './pages/Home'
 import Admin from './pages/Admin'
 import AdminLogin from './pages/AdminLogin'
@@ -34,6 +34,22 @@ function ProtectedRoute({ children }) {
 
 export default function App() {
   const location = useLocation()
+
+  if (!hasSupabaseConfig) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
+        <div className="max-w-xl rounded-xl border border-danger/30 bg-danger/10 p-6 text-left">
+          <h1 className="text-xl font-semibold mb-2">Missing environment variables</h1>
+          <p className="text-sm text-muted">
+            {supabaseConfigMessage}
+          </p>
+          <p className="text-sm text-muted mt-3">
+            Copy `.env.example` to `.env`, add your Supabase values, and restart `npm run dev`.
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <AnimatePresence mode="wait">
