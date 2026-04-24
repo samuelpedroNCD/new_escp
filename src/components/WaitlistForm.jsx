@@ -110,21 +110,17 @@ export default function WaitlistForm() {
           isSelected={gdpr}
           onChange={setGdpr}
           isInvalid={!!errors.gdpr}
-          className="flex items-start gap-2 cursor-pointer"
+          className="flex items-start gap-2 cursor-pointer w-full"
         >
           <Checkbox.Control className="mt-0.5 shrink-0 w-4 h-4 rounded border border-border bg-field-background data-[selected=true]:bg-accent data-[selected=true]:border-accent transition">
             <Checkbox.Indicator />
           </Checkbox.Control>
-          <Checkbox.Content className="text-sm text-muted leading-snug">
+          <span className="text-sm text-muted leading-snug">
             I agree to the{' '}
-            <a href="/privacy" target="_blank" rel="noreferrer" className="text-accent underline underline-offset-2 hover:opacity-80">
-              Privacy Policy
-            </a>{' '}
+            <a href="/privacy" target="_blank" rel="noreferrer" className="text-accent underline underline-offset-2 hover:opacity-80">Privacy Policy</a>{' '}
             and{' '}
-            <a href="/terms" target="_blank" rel="noreferrer" className="text-accent underline underline-offset-2 hover:opacity-80">
-              Terms &amp; Conditions
-            </a>
-          </Checkbox.Content>
+            <a href="/terms" target="_blank" rel="noreferrer" className="text-accent underline underline-offset-2 hover:opacity-80">Terms &amp; Conditions</a>
+          </span>
         </Checkbox>
         {errors.gdpr && (
           <p className="text-xs text-danger pl-6">{errors.gdpr}</p>
