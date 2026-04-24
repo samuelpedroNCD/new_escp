@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npx create-vite@latest . --template react)",
+      "Read(//private/tmp/**)",
+      "Bash(npx create-vite@latest waitlist-io --template react)",
+      "Read(//tmp/**)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"const h = require\\('@heroui/react'\\); console.log\\(Object.keys\\(h\\).filter\\(k => k.toLowerCase\\(\\).includes\\('provider'\\)\\)\\)\")",
+      "mcp__f090e4b5-3346-4953-8781-55e8d16b3893__deploy_to_vercel",
+      "Bash(npm list *)",
+      "Bash(vercel whoami *)",
+      "Bash(vercel deploy *)",
+      "Bash(vercel env *)"
+    ]
+  }
+}
