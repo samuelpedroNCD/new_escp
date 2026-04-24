@@ -1,14 +1,5 @@
 import { useEffect, useState } from 'react'
-import {
-  Table,
-  Spinner,
-  Button,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from '@heroui/react'
+import { Table, Spinner, Button } from '@heroui/react'
 import { supabase } from '../lib/supabaseClient'
 
 function formatDate(iso) {
@@ -132,22 +123,31 @@ export default function AdminTable({ onCountChange }) {
         </Table.Content>
       </Table.ScrollContainer>
     </Table>
-    <Modal isOpen={Boolean(rowToDelete)} onOpenChange={(open) => !open && setRowToDelete(null)}>
-      <ModalContent>
-        <ModalHeader>Delete waitlist entry?</ModalHeader>
-        <ModalBody>
-          This action cannot be undone. {rowToDelete?.email ? `Delete ${rowToDelete.email}?` : ''}
-        </ModalBody>
-        <ModalFooter>
-          <Button variant="light" onPress={() => setRowToDelete(null)} isDisabled={deleting}>
-            Cancel
-          </Button>
-          <Button color="danger" onPress={confirmDelete} isLoading={deleting}>
-            Delete
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    {Boolean(rowToDelete) && (
+      <div
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-4"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="delete-entry-title"
+      >
+        <div className="w-full max-w-md rounded-2xl border border-border bg-background p-6 text-left shadow-xl">
+          <h2 id="delete-entry-title" className="text-lg font-semibold text-foreground">
+            Delete waitlist entry?
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            This action cannot be undone. {rowToDelete?.email ? `Delete ${rowToDelete.email}?` : ''}
+          </p>
+          <div className="mt-6 flex justify-end gap-2">
+            <Button variant="light" onPress={() => setRowToDelete(null)} isDisabled={deleting}>
+              Cancel
+            </Button>
+            <Button color="danger" onPress={confirmDelete} isLoading={deleting}>
+              Delete
+            </Button>
+          </div>
+        </div>
+      </div>
+    )}
     </div>
   )
 }
