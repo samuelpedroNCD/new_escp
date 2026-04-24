@@ -134,7 +134,7 @@ export default function WaitlistForm() {
       <Button
         type="submit"
         isDisabled={loading || submitted}
-        className="w-full rounded-xl bg-accent text-accent-foreground font-semibold py-3 hover:opacity-90 active:scale-[0.98] transition disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full rounded-full bg-accent text-accent-foreground font-semibold py-3 hover:opacity-90 active:scale-[0.98] transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? 'Joining…' : 'Join the Waitlist'}
       </Button>
